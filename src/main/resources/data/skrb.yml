@@ -1,0 +1,14 @@
+url:
+    'https://farm8.staticflickr.com/7292/8740194847_d89bf09851_k_d.jpg'
+tokei:
+  top: '100'
+  left: '50'
+  color: '#ffffff'
+name:
+    'Yuichi Sakuraba'
+title:
+    'at Java Day Tokyo 2013'
+bio:
+    'Known as the first Java Champion from Japan and player of Dukelele'
+taken_by:
+    '@zephiransas'

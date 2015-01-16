@@ -1,0 +1,14 @@
+url:
+    'https://farm4.staticflickr.com/3671/14274882513_b6be04f6c3_k_d.jpg'
+tokei:
+  top: '100'
+  left: '100'
+  color: '#ffffff'
+name:
+    'Yoshio Terada'
+title:
+    'at Java Day Tokyo 2014'
+bio:
+    'Oracle Java Evangelist'
+taken_by:
+    '@zephiransas'
