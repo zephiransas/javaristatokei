@@ -12,16 +12,21 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static javaristatokei.JsonUtil.json;
 import static spark.Spark.get;
 import static spark.Spark.staticFileLocation;
+import static spark.SparkBase.port;
 
 public class Server {
 
     public static void main(String[] args) {
 
         staticFileLocation("/public");
+
+        Optional<String> optionalPort = Optional.ofNullable(System.getenv("PORT"));
+        optionalPort.ifPresent(portNumber -> port(Integer.parseInt(portNumber)));
 
         get("/", (req, res) -> new ModelAndView(null, "index.ftl")
         , new FreeMarkerEngine());
