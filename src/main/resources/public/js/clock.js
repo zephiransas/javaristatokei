@@ -20,7 +20,8 @@ var clock = new Vue({
   el: '#demo',
   data: {
     moment: moment(),
-    lists: null
+    lists: null,
+    pinnedId: null
   },
   computed: {
     hour: {
@@ -42,6 +43,10 @@ var clock = new Vue({
         get: function() {
             var lists = this.lists;
             if(lists == null) return null;
+
+            if(this.pinnedId != "") {
+                return this.pinned();
+            }
             var number = (Math.floor(this.moment.unix() / 60)) % lists.length;
             return lists[number];
         }
@@ -49,6 +54,7 @@ var clock = new Vue({
   },
   watch: {
     current: function(newValue, oldValue){
+        if(newValue == undefined) return;
         if(oldValue == null) {
             console.log("new to " + newValue.id)
             this.refresh(newValue);
@@ -109,11 +115,22 @@ var clock = new Vue({
               resize(box);
               box.fadeIn();
           };
+      },
+      pinned: function() {
+          var lists = this.lists;
+          var pinnedId = this.pinnedId;
+          for (var i = 0; i < lists.length; i++) {
+              if (lists[i].id == pinnedId) return lists[i];
+          }
+          return null;
       }
   }
 })
 
 clock.loadLists();
+
+var id = location.hash.replace(/^#/, '');
+clock.pinnedId = id;
 
 setInterval(function(){
     clock.refreshMoment();
