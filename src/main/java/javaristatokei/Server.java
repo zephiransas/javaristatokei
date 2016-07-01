@@ -15,9 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static javaristatokei.JsonUtil.json;
-import static spark.Spark.get;
-import static spark.Spark.staticFileLocation;
-import static spark.SparkBase.port;
+import static spark.Spark.*;
 
 public class Server {
 
